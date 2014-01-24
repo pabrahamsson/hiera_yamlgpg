@@ -79,8 +79,8 @@ class Hiera
             end
 
             def decrypt_any(d)
-                if d.kind_of? String
-                    if d.match(/^-----BEGIN PGP MESSAGE-----[[:space:]]*\n/)
+                if d.kind_of? String or d.kind_of? Fixnum
+                    if d.to_s.match(/^-----BEGIN PGP MESSAGE-----[[:space:]]*\n/)
                         return decrypt_ciphertext(d)
                     else
                         return d
