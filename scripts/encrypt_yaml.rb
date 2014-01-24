@@ -43,8 +43,8 @@ def main(argv=ARGV)
 end
 
 def encrypt_any(r, d, ctx)
-  if d.kind_of? String
-    if !d.match(/^-----BEGIN PGP MESSAGE-----[[:space:]]*\n/)
+  if d.kind_of? String or d.kind_of? Fixnum
+    if !d.to_s.match(/^-----BEGIN PGP MESSAGE-----[[:space:]]*\n/)
       return encrypt_text(r,d,ctx)
     else
       return d
